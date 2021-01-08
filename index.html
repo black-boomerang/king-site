@@ -4,13 +4,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>King of the exchange</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
 	<link href="icons/font/bootstrap-icons.css" rel="stylesheet">
 	<link href="css/style.css" rel="stylesheet">
+	<link rel="icon" href="images/favicon.svg">
 </head>
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+	<script src="js/custom.js"></script>
  	<header>
  		<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
  			<div class="container-fluid">
@@ -44,7 +45,7 @@
  							</a>
  						</li>
  						<li class="nav-item px-1">
- 							<a href="#" class="nav-link">
+ 							<a href="profile.html" class="nav-link">
  								<i class="bi bi-person-circle"></i> Профиль
  							</a>
  						</li>
@@ -55,26 +56,124 @@
  		</nav>
  	</header>
 
- 	<!-- Модальное окно -->
+ 	<!-- Модальное окно входа -->
  	<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true" aria-labelledby="#loginLabel">
  		<div class="modal-dialog">
  			<div class="modal-content">
  				<div class="modal-header">
  					<h3 class="modal-title" id="loginLabel">Войти</h3>
- 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
- 						<span aria-hidden="true">&times;</span>
- 					</button>
+ 					<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
  				</div>
  				<div class="modal-body">
- 					
+ 					<form class="form center-block needs-validation" novalidate>
+            			<div class="form-group mb-3">
+              				<input type="text" class="form-control input-lg" placeholder="Логин" required>
+              				<div class="invalid-feedback">
+          						Заполните пустое поле.
+        					</div>
+            			</div>
+            			<div class="form-group mb-3">
+              				<input type="password" class="form-control input-lg" placeholder="Пароль" required>
+              				<div class="invalid-feedback">
+          						Заполните пустое поле.
+        					</div>
+            			</div>
+            			<div class="form-group">
+              				<button class="btn btn-success btn-lg btn-block mb-1">Войти</button>
+              				<span><a href="" data-dismiss="modal" data-toggle="modal" data-target="#recoveryModal">Забыли пароль?</a></span>
+              				<span class="float-right"><a href="" data-dismiss="modal"  data-toggle="modal" data-target="#regModal">Зарегистрироваться</a></span>
+            			</div>
+         			</form>
  				</div>
  				<div class="modal-footer">
- 					<button class="btn btn-outline-dark">Подтвердить</button>
+ 					<button class="btn btn-outline-dark" data-dismiss="modal">Закрыть</button>
  				</div>
  			</div>
  		</div>
  	</div>
- 	<!-- Модальное окно -->
+ 	<!-- Модальное окно входа -->
+
+ 	<!-- Модальное окно регистрации -->
+ 	<div class="modal fade" id="regModal" tabindex="-1" aria-hidden="true" aria-labelledby="#regLabel">
+ 		<div class="modal-dialog">
+ 			<div class="modal-content">
+ 				<div class="modal-header">
+ 					<h3 class="modal-title" id="regLabel">Регистрация</h3>
+ 					<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+ 				</div>
+ 				<div class="modal-body">
+ 					<form class="form center-block needs-validation" novalidate>
+            			<div class="form-group mb-3">
+              				<input type="text" class="form-control input-lg" placeholder="Логин" required pattern="[A-Za-z0-9]{3,20}">
+              				<div class="invalid-feedback">
+          						Логин должен состоять из латинских букв и цифр и содержать хотя бы 3 символа.
+        					</div>
+            			</div>
+            			<div class="form-group mb-3">
+              				<input type="password" class="form-control input-lg" placeholder="Пароль" required minlength="6">
+              				<div class="invalid-feedback">
+          						Пароль должен содержать хотя бы 6 символов.
+        					</div>
+            			</div>
+            			<div class="form-group mb-3">
+              				<input type="password" class="form-control input-lg" placeholder="Повторите пароль" required>
+              				<div class="invalid-feedback">
+          						Пароли должны совпадать.
+        					</div>
+            			</div>
+            			<div class="form-group mb-3">
+              				<input type="text" class="form-control input-lg" placeholder="Фамилия Имя" required>
+              				<div class="invalid-feedback">
+          						Заполните пустое поле.
+        					</div>
+            			</div>
+            			<div class="form-group mb-3">
+              				<input type="email" class="form-control input-lg" placeholder="Email" required>
+              				<div class="invalid-feedback">
+          						Введите корректный email.
+        					</div>
+            			</div>
+            			<div class="form-group">
+              				<button class="btn btn-success btn-lg btn-block mb-1">Зарегистрироваться</button>
+            			</div>
+         			</form>
+ 				</div>
+ 				<div class="modal-footer">
+ 					<button class="btn btn-outline-dark" data-dismiss="modal">Закрыть</button>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<!-- Модальное окно регистрации -->
+
+ 	<!-- Модальное окно восстановления пароля -->
+ 	<div class="modal fade" id="recoveryModal" tabindex="-1" aria-hidden="true" aria-labelledby="#recoveryLabel">
+ 		<div class="modal-dialog">
+ 			<div class="modal-content">
+ 				<div class="modal-header">
+ 					<h3 class="modal-title" id="recoveryLabel">Восстановление пароля</h3>
+ 					<button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+ 				</div>
+ 				<div class="modal-body">
+ 					<form class="form center-block needs-validation" novalidate>
+            			<div class="form-group mb-3">
+              				<input type="email" class="form-control input-lg" placeholder="Email" required>
+              				<div class="invalid-feedback">
+          						Введите корректный email.
+        					</div>
+            			</div>
+            			<div class="form-group">
+              				<button class="btn btn-success btn-lg btn-block mb-1">Восстановить</button>
+            			</div>
+         			</form>
+ 				</div>
+ 				<div class="modal-footer">
+ 					<button class="btn btn-outline-dark" data-dismiss="modal">Закрыть</button>
+ 				</div>
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<!-- Модальное окно восстановления пароля -->
 
  	<main>
  		<div class="carousel slide" id="carouselControls" data-ride="carousel">
