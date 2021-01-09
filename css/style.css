@@ -10277,4 +10277,10 @@ progress {
   height: 60vh;
 }
 
+@media (min-width: 768px) and (max-width: 1399.98px) {
+  .profile-card_btn {
+    width: 100%;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

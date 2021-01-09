@@ -15,5 +15,11 @@ $success: #94eea9;
 
 .carousel-item img {
 	object-fit: cover;
-		height: 60vh;
+	height: 60vh;
+}
+
+@include media-breakpoint-between(md, xxl) {
+	.profile-card_btn {
+		width: 100%;
+	}
 }
